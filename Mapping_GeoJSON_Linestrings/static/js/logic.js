@@ -37,8 +37,16 @@ let torontoData = "https://raw.githubusercontent.com/evanbruno617/Mapping_Earthq
 // Grabbing our GeoJSON data.
 d3.json(torontoData).then(function(data) {
     console.log(data);
+// Create a style for the lines.
+let myStyle = {
+    color: "#ffffa1",
+    weight: 2
+}
 // Creating a GeoJSON layer with the retrieved data.
+
+
 L.geoJSON(data, {
+    style: myStyle,
 onEachFeature: function(feature, layer){
   layer.bindPopup("<h2> Airlines: " + feature.properties.airline + "</h2> <hr> <h4> Destination: " + feature.properties.dst + "</h4>");
 }
