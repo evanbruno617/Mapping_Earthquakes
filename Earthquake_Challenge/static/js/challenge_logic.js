@@ -174,36 +174,36 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geoj
   
 
   // Here we create a legend control object.
-let legend = L.control({
-  position: "bottomright"
-});
+  let legend = L.control({
+    position: "bottomright"
+  });
 
-// Then add all the details for the legend
+  // Then add all the details for the legend.
 legend.onAdd = function() {
-  let div = L.DomUtil.create("div", "info legend");
-
-  const magnitudes = [0, 1, 2, 3, 4, 5];
-  const colors = [
-    "#98ee00",
-    "#d4ee00",
-    "#eecc00",
-    "#ee9c00",
-    "#ea822c",
-    "#ea2c2c"
-  ];
-
-// Looping through our intervals to generate a label with a colored square for each interval.
-  for (var i = 0; i < magnitudes.length; i++) {
+    let div = L.DomUtil.create("div", "info legend");
+    const magnitudes = [0, 1, 2, 3, 4, 5];
+const colors = [
+  "#98ee00",
+  "#d4ee00",
+  "#eecc00",
+  "#ee9c00",
+  "#ea822c",
+  "#ea2c2c"
+];
+    // Looping through our intervals to generate a label with a colored square for each interval.
+for (var i = 0; i < magnitudes.length; i++) {
     console.log(colors[i]);
     div.innerHTML +=
       "<i style='background: " + colors[i] + "'></i> " +
       magnitudes[i] + (magnitudes[i + 1] ? "&ndash;" + magnitudes[i + 1] + "<br>" : "+");
-    }
-    return div;
-  };
+ }
+  return div;
+};
 
   // Finally, we our legend to the map.
   legend.addTo(map);
+
+
 
    // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
    d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(data => {
@@ -219,3 +219,5 @@ legend.onAdd = function() {
 
     tectonic.addTo(map)
   });
+
+
